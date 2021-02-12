@@ -1,0 +1,9 @@
+﻿namespace MuddyBoots.Advice {
+
+ category adviceCat = "Advice"
+ 
+ attribute AuthorizeFailureMessage { id="AuthorizationFailureMessage" category=adviceCat type=string }
+ advice AuthorizationFailure = "AuthorizationFailure"
+ 
+}
+ 
