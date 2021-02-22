@@ -11,12 +11,12 @@ using Rsk.Enforcer.PolicyModels;
 
 namespace EnforcerDI
 {
-    public class PolicyExecutor
+    public class EnforcerPolicyExecutor
     {
         private readonly IPolicyEnforcementPoint _pep;
         private readonly LocationRepository _locationRepository;
 
-        public PolicyExecutor(IPolicyEnforcementPoint pep, LocationRepository locationRepository)
+        public EnforcerPolicyExecutor(IPolicyEnforcementPoint pep, LocationRepository locationRepository)
         {
             _pep = pep;
             _locationRepository = locationRepository;
@@ -43,11 +43,11 @@ namespace EnforcerDI
             string action)
         {
             var context = EvaluationContextFactory.GetEvaluationContext(user, location, action);
-            var s = new Stopwatch();
-            s.Start();
+            //var s = new Stopwatch();
+            //s.Start();
             var result = await _pep.Evaluate(context);
-            s.Stop();
-            Console.WriteLine("Time: " + s.ElapsedMilliseconds + "ms");
+            //s.Stop();
+            //Console.WriteLine("Time: " + s.ElapsedMilliseconds + "ms");
 
             return new EvaluationResult(result, location);
         }

@@ -14,14 +14,14 @@ namespace EnforcerDI
             public static class Location
             {
                 public const string Name = "locationName";
-                public const string SupplierId = "locationSupplierId";
+                public const string GroupId = "locationGroupId";
             }
 
             public static class Subject
             {
                 public const string Level = "subjectLevel";
                 public const string Id = "subjectId";
-                public const string SupplierPermissions = "subjectSupplierPermissions";
+                public const string LocationPermissions = "subjectLocationPermissions";
             }
         }
 
@@ -33,15 +33,15 @@ namespace EnforcerDI
         public static class UserLevel
         {
             public const int Standard = 3;
-            public const int Supplier = 9;
+            public const int Restricted = 9;
         }
 
         public static class UserId
         {
             public const int Standard = 1;
-            public const int Supplier = 2;
+            public const int Restricted = 2;
         }
 
-        public const int ExampleSupplierId = 17;
+        public const int ExampleGroupId = 17;
     }
 }

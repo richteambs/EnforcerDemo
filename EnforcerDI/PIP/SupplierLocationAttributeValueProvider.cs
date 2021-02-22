@@ -9,39 +9,39 @@ using Rsk.Enforcer.PolicyModels;
 
 namespace EnforcerDI.PIP
 {
-    public class SupplierLocationData
+    public class UserLocationData
     {
-        public SupplierLocationData(IEnumerable<long> supplierLocations)
+        public UserLocationData(IEnumerable<long> userLocations)
         {
-            SupplierLocations = supplierLocations;
+            UserLocations = userLocations;
         }
 
-        [PolicyAttributeValue(PolicyAttributeCategories.Subject, Constants.CustomAttributes.Subject.SupplierPermissions,
+        [PolicyAttributeValue(PolicyAttributeCategories.Subject, Constants.CustomAttributes.Subject.LocationPermissions,
             Sensitivity = PolicyAttributeSensitivity.NonSensitive)]
-        public IEnumerable<long> SupplierLocations { get; }
+        public IEnumerable<long> UserLocations { get; }
     }
 
-    public class SupplierLocationAttributeValueProvider : RecordAttributeValueProvider<SupplierLocationData>
+    public class SupplierLocationAttributeValueProvider : RecordAttributeValueProvider<UserLocationData>
     {
         private static readonly PolicyAttribute SubjectId = new(Constants.CustomAttributes.Subject.Id,
             PolicyValueType.Integer, PolicyAttributeCategories.Subject);
 
-        private readonly SupplierPermissionsCache _permissionsCache;
+        private readonly UserLocationPermissionsCache _permissionsCache;
 
-        public SupplierLocationAttributeValueProvider(SupplierPermissionsCache permissionsCache)
+        public SupplierLocationAttributeValueProvider(UserLocationPermissionsCache permissionsCache)
         {
             _permissionsCache = permissionsCache;
         }
 
-        protected override async Task<SupplierLocationData> GetRecordValue(IAttributeResolver attributeResolver)
+        protected override async Task<UserLocationData> GetRecordValue(IAttributeResolver attributeResolver)
         {
             var resourceValues = await attributeResolver.Resolve<long>(SubjectId);
 
             var subjectId = resourceValues.Single();
 
-            var suppliers = _permissionsCache.GetSuppliers(subjectId);
+            var suppliers = _permissionsCache.GetPermittedGroups(subjectId);
 
-            return new SupplierLocationData(suppliers);
+            return new UserLocationData(suppliers);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace EnforcerDI.Entities
         public static readonly User StandardUser =
             new() { Id = 1, UserLevel = Constants.UserLevel.Standard, UserName = "Standard User" };
 
-        public static readonly User SupplierUser =
-            new() { Id = 2, UserLevel = Constants.UserLevel.Supplier, UserName = "Supplier User" };
+        public static readonly User RestrictedUser =
+            new() { Id = 2, UserLevel = Constants.UserLevel.Restricted, UserName = "Restricted User" };
 
         public int Id { get; set; }
 

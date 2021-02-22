@@ -11,7 +11,7 @@ namespace EnforcerDI.Entities
 
         private readonly Lazy<List<Location>> _locations;
 
-        private readonly Random _random = new();
+        private readonly Random _random = new(43);
 
         public LocationRepository()
         {
@@ -28,12 +28,12 @@ namespace EnforcerDI.Entities
             var locations = new List<Location>();
             for (var i = 0; i < LocationCount; i++)
             {
-                // 25% chance of being the special-case supplier ID, otherwise a random value that isn't the
-                // supplier ID. Note that the ExampleSupplierId value must be less than the percentage for
+                // 25% chance of being assigned to the special-case group ID, otherwise a random value that isn't the
+                // group ID. Note that the ExampleGroupId value must be less than the percentage for
                 // this to work.
-                var random = _random.Next(100);
-                var supplierId = random < 25 ? Constants.ExampleSupplierId : random;
-                var l = new Location { Id = i, SupplierId = supplierId, LocationName = Guid.NewGuid().ToString() };
+                var random = _random.Next(99);
+                var groupId = random < 25 ? Constants.ExampleGroupId : random;
+                var l = new Location { Id = i, GroupId = groupId, LocationName = Guid.NewGuid().ToString() };
                 locations.Add(l);
             }
 

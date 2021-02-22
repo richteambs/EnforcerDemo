@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "EnforcerDI": {
+      "commandName": "Project",
+      "commandLineArgs": "--filter *PolicyBenchmarks.*"
+    }
+  }
+}

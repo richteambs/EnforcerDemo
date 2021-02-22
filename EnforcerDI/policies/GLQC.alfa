@@ -8,7 +8,7 @@
     
     
     attribute LocationName { id="locationName" category=resourceCat type=string }
-    attribute LocationSupplierId { id="locationSupplierId" category=resourceCat type=integer }
+    attribute LocationGroupId { id="locationGroupId" category=resourceCat type=integer }
     
     policy QC_Locations {
         apply denyUnlessPermit
@@ -24,7 +24,7 @@
             permit
             target clause Action == 'Read'
             
-            condition Subject.SupplierPermissions == LocationSupplierId
+            condition Subject.GroupPermissions == LocationGroupId
         }      
         
     }

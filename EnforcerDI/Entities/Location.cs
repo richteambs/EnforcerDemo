@@ -8,6 +8,6 @@
 
         public string LocationName { get; set; }
 
-        public int SupplierId { get; set; }
+        public int GroupId { get; set; }
     }
 }

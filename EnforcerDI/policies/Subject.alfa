@@ -1,5 +1,5 @@
 ﻿namespace Oasis.Attributes.Subject {
     attribute Id { id="subjectId" category=subjectCat type=integer }
     attribute Level { id="subjectLevel" category=subjectCat type=integer }
-    attribute SupplierPermissions { id="subjectSupplierPermissions" category=subjectCat type=integer}
+    attribute GroupPermissions { id="subjectLocationPermissions" category=subjectCat type=integer}
  }

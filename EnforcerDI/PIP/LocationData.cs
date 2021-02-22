@@ -19,9 +19,9 @@ namespace EnforcerDI.PIP
             Sensitivity = PolicyAttributeSensitivity.NonSensitive)]
         public string ResourceType => Constants.ResourceTypes.Location;
 
-        [PolicyAttributeValue(PolicyAttributeCategories.Resource, Constants.CustomAttributes.Location.SupplierId,
+        [PolicyAttributeValue(PolicyAttributeCategories.Resource, Constants.CustomAttributes.Location.GroupId,
             Sensitivity = PolicyAttributeSensitivity.NonSensitive)]
-        public int? SupplierId => _location.SupplierId;
+        public int? GroupId => _location.GroupId;
 
         public void SetData(Location source)
         {
